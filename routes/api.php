@@ -24,6 +24,7 @@ Route::group([
     Route::post('/register', 'AuthController@register')->name('register');
 
     Route::resource('posts', 'PostController')->only(['index', 'show']);
+    Route::resource('tags', 'TagController')->only(['index', 'show']);
 
     // private routes
     Route::middleware('auth:api')->group(function () {
@@ -33,5 +34,6 @@ Route::group([
         Route::get('/logout', 'AuthController@logout')->name('logout');
 
         Route::resource('posts', 'PostController')->only(['store', 'update', 'destroy']);
+        Route::resource('tags', 'TagController')->only(['store', 'update', 'destroy']);
     });
 });

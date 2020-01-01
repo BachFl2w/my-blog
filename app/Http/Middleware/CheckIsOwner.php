@@ -17,8 +17,16 @@ class CheckIsOwner
     public function handle($request, Closure $next)
     {
         $user = $request->user();
-        $postIsNotEmpty = collect($request->route('post'))->isNotEmpty();
+        $post = $request->route('post');
 
-        return $postIsNotEmpty ? $next($request) : abort(404);
+        if (collect($post)->isEmpty()) {
+            abort(404);
+        }
+
+        if ($user->id !== $post->user_id) {
+            abort(403);
+        }
+
+        return $next($request);
     }
 }

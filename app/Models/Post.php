@@ -42,7 +42,7 @@ class Post extends Model
     }
 
     /**
-     * Get the user's first name.
+     * Get the meta title.
      *
      * @param  string  $value
      * @return string
