@@ -14,17 +14,24 @@ use App\Http\Resources\User as UserResource;
 |
 */
 
-Route::group(['middleware' => ['json.response']], function () {
+Route::group([
+    'middleware' => ['json.response'],
+    'namespace' => 'Api',
+    'as' => 'api.',
+], function () {
     // public routes
-    Route::post('/login', 'Api\AuthController@login')->name('login.api');
-    Route::post('/register', 'Api\AuthController@register')->name('register.api');
+    Route::post('/login', 'AuthController@login')->name('login');
+    Route::post('/register', 'AuthController@register')->name('register');
+
+    Route::resource('posts', 'PostController')->only(['index', 'show']);
 
     // private routes
     Route::middleware('auth:api')->group(function () {
         Route::get('/user', function (Request $request) {
             return $request->user();
         });
-        Route::get('/logout', 'Api\AuthController@logout')->name('logout');
-    });
+        Route::get('/logout', 'AuthController@logout')->name('logout');
 
+        Route::resource('posts', 'PostController')->only(['store', 'update', 'destroy']);
+    });
 });

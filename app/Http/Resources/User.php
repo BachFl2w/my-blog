@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class Users extends ResourceCollection
+class User extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -14,7 +14,6 @@ class Users extends ResourceCollection
      */
     public function toArray($request)
     {
-        dd($this);
         return parent::toArray($request);
     }
 }
