@@ -1,5 +1,4 @@
 # My Blog
-
 myblog.local
 
 ## Backend
@@ -35,7 +34,7 @@ docker-compose exec workspace bash
 ```
 
 
-#!/bin/bash
+<!-- #!/bin/bash
 # type `yes yes | ./remove_docker.sh`
 
 docker system prune -f
@@ -47,4 +46,17 @@ docker volume prune -f
 docker network prune -f
 
 docker-compose down
-docker-compose up -d nginx mysql
+docker-compose up -d nginx mysql -->
+
+# setup docker
+https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose
+## mysql
+```bash
+docker-compose exec db bash
+
+mysql -u root -p
+
+GRANT ALL ON my_blog.* TO 'root'@'%' IDENTIFIED BY 'root';
+
+FLUSH PRIVILEGES;
+```
