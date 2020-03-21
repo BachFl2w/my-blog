@@ -3,6 +3,8 @@ myblog.local
 
 ## Backend
 
+**Database:** https://mysql.tutorials24x7.com/blog/guide-to-design-a-database-for-blog-management-in-mysql
+
 **Laravel**
 
 ### Package
@@ -46,10 +48,12 @@ docker volume prune -f
 docker network prune -f
 
 docker-compose down
-docker-compose up -d nginx mysql -->
+docker-compose up -d nginx mysql
+-->
 
 # setup docker
 https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose
+
 ## mysql
 ```bash
 docker-compose exec db bash

@@ -33,6 +33,8 @@ class StorePost extends FormRequest
             'summary' => 'required|string',
             'published' => 'required|boolean',
             'content' => 'required|string',
+            'tag.*.id' => 'required|exists:tags',
+            'category.*id' => 'required|exists:categories',
         ];
     }
 }
